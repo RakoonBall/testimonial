@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonial Slider</title>
+    <style>
+        body{
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: cursive;
+
+        }
+        .testimonial-container{
+            width: 500px;
+            height: 100px;
+            background-color: slateblue;
+            box-shadow: 0 4px 8px rgba(0,0,0,.3) ;
+            border-radius: 10px;
+            min-width: 400px;
+            padding: 40px 20px;
+            margin: 5px;
+            color: white;
+            position: relative;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -50px;
+
+        }
+        .username{
+            font-size: 13px;
+            font-weight: 100;
+        }
+    </style>
+</head>
+<body>
+    <div class="testimonial-container">
+        <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto" alt="">
+        <p class="text">"I would also like to say thank you to all your staff. Needless to say we are extremely satisfied with the results."</p>
+        <h4 class="username">- Donovan Z.</h4>
+    </div>
+    <script>
+
+        const imgEl = document.querySelector("img");
+        const textEl = document.querySelector(".text");
+        const usernameEl = document.querySelector(".username");
+        const testimonials = [
+            {
+                name:"Charise G",
+                photoUrl:"https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80",
+                text:"I would also like to say thank you to all your staff. Needless to say we are extremely satisfied with the results."
+            },
+            {
+                name:"Charise G",
+                photoUrl:"https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=800&q=60",
+                text:"This is simply unbelievable! I would also like to say thank you to all your staff. Great job, I will definitely be ordering again!"
+
+            },
+            {
+                name:"Charise G",
+                photoUrl:"https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80",
+                text:"Nice work on your apple. Thank you for making it painless, pleasant and most of all hassle free! Best. Product. Ever!"
+            }
+        ];
+        let idx=0;
+        updateTestimonial();
+        function updateTestimonial(){
+            const {name, photoUrl, text } = testimonials[idx];
+            imgEl.src = photoUrl;
+            textEl.innerText = text;
+            usernameEl.innerText = name;
+            idx++;
+            if(idx === testimonials.length){
+                idx =0;
+            }
+            setTimeout(()=>{
+                updateTestimonial();
+        },10000)
+        }
+      
+
+    </script>
+</body>
+</html>
